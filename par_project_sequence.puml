@@ -1,0 +1,27 @@
+@startuml
+actor main as ma
+participant navigation as na
+participant pose as po
+collections manipulator as ro
+participant gripper as gr
+participant person as pe
+
+== Pose ==
+ma -> po: type
+ma <- po: count,pose
+== Navigation ==
+
+ma->na: goal
+ma<-na:ok
+
+== Manipulation & Gripping ==
+ma->ro:catchInPose
+ro->gr:open
+gr->ro:ok
+ro->gr:close
+gr->ro:ok
+gr->ma:ok
+== People search ==
+ma->pe:search
+ma->pe:ok
+@enduml
